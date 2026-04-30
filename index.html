@@ -744,7 +744,7 @@ footer{background:var(--bg);border-top:1px solid rgba(255,255,255,.05);padding:3
   <div class="footer-copy">Senior HCL Domino Developer &amp; Migration SME · Toronto, Canada</div>
 <div style="font-size:10px;color:rgba(148,163,184,.35);letter-spacing:.08em;margin-top:4px;">
   <span style="margin-left:10px;">👁</span>
-  <span id="visit-count" style="color:rgba(129,140,248,.5);"></span>
+  <span id="visit-count" style="color:rgba(129,140,248,.5);">.</span>
 </div>
 </footer>
 
@@ -870,19 +870,18 @@ if(card){
   startTimer();
 })();
 
-  /* Real visitor counter via CountAPI */
-(function(){
-  fetch('https://api.countapi.xyz/hit/srini-bodepudi-portfolio/visits')
-    .then(r => r.json())
+/* Real visitor counter via CountAPI */
+document.addEventListener('DOMContentLoaded', function() {
+  fetch('https://api.countapi.xyz/hit/srini-bodepudi.com/portfolio-visits')
+    .then(res => res.json())
     .then(data => {
-      const el = document.getElementById('visit-count');
-      if(el) el.textContent = data.value.toLocaleString();
+      document.getElementById('visit-count').textContent = data.value.toLocaleString();
     })
-    .catch(() => {
-      const el = document.getElementById('visit-count');
-      if(el) el.textContent = '';
+    .catch(err => {
+      console.error(err);
+      document.getElementById('visit-count').textContent = '0';
     });
-})();
+});
   
 </script>
 </body>

@@ -929,8 +929,7 @@ function downloadVCF() {
 (function(){
   // Create WhatsApp floating widget
   var phone   = '16475134013';
-  var message = `Hi Srini Bodepudi,<br/> 
- I am interested in connecting with you.`;
+  var message = 'Hi Srini Bodepudi,%0AI am interested in connecting with you.';
   var name    = 'Srini Bodepudi';
   var status  = 'Senior Lotus Notes/HCL Domino Developer';
   var reply = 'Hello! 👋 I\'m Srini Bodepudi,<br/>How can I help you?';
@@ -1143,8 +1142,15 @@ function downloadVCF() {
   closeBtn.addEventListener('click', closePopup);
 
   function sendMsg(){
-    var txt = input.value.trim() || message;
-    var url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(txt);
+    var txt = input.value || message;
+    // If using default message, use as-is (already URL encoded)
+    // If user typed custom text, encode it properly
+    var url;
+    if(txt === message){
+      url = 'https://wa.me/' + phone + '?text=' + message;
+    } else {
+      url = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(txt);
+    }
     window.open(url, '_blank');
   }
 

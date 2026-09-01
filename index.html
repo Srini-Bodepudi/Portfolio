@@ -32,6 +32,15 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 body:hover #cursor{background:var(--cyan)}
 #cursor.click{transform:translate(-50%,-50%) scale(0.6)}
 #cursor-ring.click{border-color:var(--pink);transform:translate(-50%,-50%) scale(1.4)}
+@media(max-width:1024px){
+  #cursor,#cursor-ring{display:none !important;}
+  body{cursor:auto !important;}
+  .btn{cursor:pointer !important;}
+  #photo-play-wrap{cursor:pointer !important;}
+  #wa-fab{cursor:pointer !important;}
+  #go-top{cursor:pointer !important;}
+  #cpc-btn, .cpc-btn{cursor:pointer !important;}
+}
 
 /* Loader */
 #loader{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:99990;transition:opacity .7s ease,visibility .7s ease}

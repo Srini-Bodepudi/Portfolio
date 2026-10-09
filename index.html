@@ -35,6 +35,9 @@ body:hover #cursor{background:var(--cyan)}
 @media(max-width:1024px){
   #cursor,#cursor-ring{display:none !important;}
   body{cursor:auto !important;}
+  *{cursor:auto !important;}
+  a,button,.btn,.cpc-btn,.nav-toggle{cursor:pointer !important;}
+  body{cursor:auto !important;}
   .btn{cursor:pointer !important;}
   #photo-play-wrap{cursor:pointer !important;}
   #wa-fab{cursor:pointer !important;}
@@ -67,7 +70,7 @@ nav.scrolled{box-shadow:0 4px 32px rgba(0,0,0,.5)}
 @media(max-width:900px){#nav-close-btn{display:flex;align-items:center;}}
 .nav-links a[href="#ai-projects"]{color:#ef4444!important;font-weight:700;}
 .nav-links a[href="#ai-projects"]::after{background:linear-gradient(90deg,#ef4444,#f97316)!important;}
-.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
 .nav-toggle span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
 
 /* Sections */
@@ -529,11 +532,13 @@ footer{background:var(--bg);border-top:1px solid rgba(255,255,255,.05);padding:3
           <div style="position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,.42);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
             <button type="button"
               onclick="document.getElementById('yt-iframe').src='https://www.youtube-nocookie.com/embed/D0P59_JJwvM?autoplay=1&rel=0&playsinline=1&modestbranding=1';document.getElementById('video-modal').style.display='flex';document.body.style.overflow='hidden';"
+              ontouchstart="this.onclick()"
               style="width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.25);border:2px solid rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;animation:play-pulse 2s ease-in-out infinite;cursor:pointer;-webkit-tap-highlight-color:transparent;padding:0;box-shadow:0 4px 24px rgba(79,70,229,.6);">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff"><polygon points="6,3 20,12 6,21"/></svg>
             </button>
             <button type="button"
               onclick="document.getElementById('yt-iframe').src='https://www.youtube-nocookie.com/embed/D0P59_JJwvM?autoplay=1&rel=0&playsinline=1&modestbranding=1';document.getElementById('video-modal').style.display='flex';document.body.style.overflow='hidden';"
+              ontouchstart="this.onclick()"
               style="background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.85);border-radius:9999px;padding:5px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;cursor:pointer;-webkit-tap-highlight-color:transparent;">
               WATCH INTRO
             </button>
@@ -583,6 +588,7 @@ footer{background:var(--bg);border-top:1px solid rgba(255,255,255,.05);padding:3
       font-family:sans-serif;
     "
     onclick="document.getElementById('yt-iframe').src='';document.getElementById('video-modal').style.display='none';document.body.style.overflow='';"
+    ontouchstart="document.getElementById('yt-iframe').src='';document.getElementById('video-modal').style.display='none';document.body.style.overflow='';"
     onmouseover="this.style.background='rgba(236,72,153,.75)';this.style.transform='scale(1.1)'"
     onmouseout="this.style.background='rgba(0,0,0,.65)';this.style.transform='scale(1)'"
     >✕</button>

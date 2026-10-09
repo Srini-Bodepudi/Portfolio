@@ -16,7 +16,7 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;cursor:none}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;}
 
 /* Scrollbar */
 ::-webkit-scrollbar{width:5px}
@@ -38,8 +38,7 @@ body:hover #cursor{background:var(--cyan)}
   *{cursor:auto !important;}
   a,button,.btn,.cpc-btn,.nav-toggle{cursor:pointer !important;}
   body{cursor:auto !important;}
-  .btn{cursor:pointer !important;}
-  #photo-play-wrap{cursor:pointer !important;}
+    #photo-play-wrap{cursor:pointer !important;}
   #wa-fab{cursor:pointer !important;}
   #go-top{cursor:pointer !important;}
   #cpc-btn, .cpc-btn{cursor:pointer !important;}
@@ -92,7 +91,7 @@ section{position:relative;z-index:1;padding:100px clamp(20px,5vw,80px)}
 .hero-ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center;animation:fade-up .7s .5s ease both}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:12px;font-size:14px;font-weight:600;letter-spacing:.02em;text-decoration:none;cursor:none;transition:transform .2s,box-shadow .2s;font-family:'DM Sans',sans-serif}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:12px;font-size:14px;font-weight:600;letter-spacing:.02em;text-decoration:none;cursor:pointer;transition:transform .2s,box-shadow .2s;font-family:'DM Sans',sans-serif}
 .btn:hover{transform:translateY(-2px)}
 .btn-primary{background:linear-gradient(135deg,var(--indigo),var(--indigo-l));color:#fff;box-shadow:0 4px 20px rgba(79,70,229,.4)}
 .btn-primary:hover{box-shadow:0 8px 32px rgba(79,70,229,.6)}
@@ -409,6 +408,7 @@ footer{background:var(--bg);border-top:1px solid rgba(255,255,255,.05);padding:3
   .yt-frame-wrap{padding-bottom:115% !important;}
 }
 @media(min-width:1025px){
+  body{cursor:none}
   #video-modal-box{width:340px !important;}
   .yt-frame-wrap{padding-bottom:120% !important;}
 }
@@ -447,7 +447,7 @@ footer{background:var(--bg);border-top:1px solid rgba(255,255,255,.05);padding:3
     <li><a href="#publications" onclick="document.getElementById('nav-links').classList.remove('open')">Publications</a></li>
     <li><a href="#contact" onclick="document.getElementById('nav-links').classList.remove('open')">Contact</a></li>
   </ul>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav-links').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
 </nav>

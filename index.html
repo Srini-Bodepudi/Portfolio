@@ -272,8 +272,8 @@ footer{background:var(--bg);border-top:1px solid rgba(255,255,255,.05);padding:3
   .hero-card{width:100%;max-width:320px;margin:0 auto;animation:float 5s ease-in-out infinite}
   .hero-sub{text-align:center;margin:0 auto}
   nav{padding:14px 20px}
-  .nav-links{position:fixed;top:0;right:-100%;width:70%;height:100vh;background:rgba(8,12,31,.97);flex-direction:column;padding:100px 32px;gap:28px;transition:right .35s ease;backdrop-filter:blur(20px)}
-  .nav-links.open{right:0}
+  .nav-links{pointer-events:none;visibility:hidden;position:fixed;top:0;right:-100%;width:75%;height:100vh;background:rgba(8,12,31,.98);flex-direction:column;padding:80px 28px 32px;gap:24px;transition:right .35s ease,visibility .35s ease;backdrop-filter:blur(20px);z-index:9998;overflow-y:auto}
+  .nav-links.open{right:0;pointer-events:auto;visibility:visible}
   .nav-toggle{display:flex}
   .timeline{padding-left:24px}
   #go-top{bottom:20px;right:20px}
@@ -439,22 +439,24 @@ footer{background:var(--bg);border-top:1px solid rgba(255,255,255,.05);padding:3
   <div class="nav-logo">Srini Bodepudi</div>
   <ul class="nav-links" id="nav-links">
     <li style="display:flex;justify-content:flex-end;margin-bottom:8px;">
-      <button id="nav-close-btn" onclick="document.getElementById('nav-links').classList.remove('open')" style="background:none;border:none;cursor:pointer;color:var(--text);font-size:26px;line-height:1;padding:4px 8px;">&#x2715;</button>
+      <button id="nav-close-btn" onclick="document.getElementById('nav-links').classList.remove('open');document.getElementById('nav-overlay').style.display='none';" style="background:none;border:none;cursor:pointer;color:var(--text);font-size:26px;line-height:1;padding:4px 8px;">&#x2715;</button>
     </li>
-    <li><a href="#hero" onclick="document.getElementById('nav-links').classList.remove('open')">Home</a></li>
-    <li><a href="#skills" onclick="document.getElementById('nav-links').classList.remove('open')">Skills</a></li>
-    <li><a href="#experience" onclick="document.getElementById('nav-links').classList.remove('open')">Experience</a></li>
-    <li><a href="#projects" onclick="document.getElementById('nav-links').classList.remove('open')">Projects</a></li>
-    <li><a href="#ai-projects" onclick="document.getElementById('nav-links').classList.remove('open')" style="color:#ef4444;font-weight:700;">AI Projects</a></li>
-    <li><a href="#certifications" onclick="document.getElementById('nav-links').classList.remove('open')">Certs</a></li>
-    <li><a href="#education" onclick="document.getElementById('nav-links').classList.remove('open')">Education</a></li>
-    <li><a href="#publications" onclick="document.getElementById('nav-links').classList.remove('open')">Publications</a></li>
-    <li><a href="#contact" onclick="document.getElementById('nav-links').classList.remove('open')">Contact</a></li>
+    <li><a href="#hero" onclick="document.getElementById('nav-links').classList.remove('open');document.getElementById('nav-overlay').style.display='none';">Home</a></li>
+    <li><a href="#skills" onclick="document.getElementById('nav-links').classList.remove('open');document.getElementById('nav-overlay').style.display='none';">Skills</a></li>
+    <li><a href="#experience" onclick="document.getElementById('nav-links').classList.remove('open');document.getElementById('nav-overlay').style.display='none';">Experience</a></li>
+    <li><a href="#projects" onclick="document.getElementById('nav-links').classList.remove('open');document.getElementById('nav-overlay').style.display='none';">Projects</a></li>
+    <li><a href="#ai-projects" onclick="document.getElementById('nav-links').classList.remove('open');document.getElementById('nav-overlay').style.display='none';" style="color:#ef4444;font-weight:700;">AI Projects</a></li>
+    <li><a href="#certifications" onclick="document.getElementById('nav-links').classList.remove('open');document.getElementById('nav-overlay').style.display='none';">Certs</a></li>
+    <li><a href="#education" onclick="document.getElementById('nav-links').classList.remove('open');document.getElementById('nav-overlay').style.display='none';">Education</a></li>
+    <li><a href="#publications" onclick="document.getElementById('nav-links').classList.remove('open');document.getElementById('nav-overlay').style.display='none';">Publications</a></li>
+    <li><a href="#contact" onclick="document.getElementById('nav-links').classList.remove('open');document.getElementById('nav-overlay').style.display='none';">Contact</a></li>
   </ul>
-  <button class="nav-toggle" id="nav-toggle" aria-label="Menu" onclick="document.getElementById('nav-links').classList.toggle('open')">
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu" onclick="var nl=document.getElementById('nav-links');var ov=document.getElementById('nav-overlay');nl.classList.toggle('open');ov.style.display=nl.classList.contains('open')?'block':'none';">
     <span></span><span></span><span></span>
   </button>
 </nav>
+<!-- Nav overlay - closes menu when tapping outside -->
+<div id="nav-overlay" onclick="document.getElementById('nav-links').classList.remove('open');this.style.display='none';" style="display:none;position:fixed;inset:0;z-index:9997;background:rgba(0,0,0,.5);"></div>
 
 <!-- Go-to-top button -->
 <button id="go-top" aria-label="Back to top" onclick="window.scrollTo({top:0,behavior:'smooth'})">
@@ -539,7 +541,7 @@ footer{background:var(--bg);border-top:1px solid rgba(255,255,255,.05);padding:3
             <div style="width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.25);border:2px solid rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center;animation:play-pulse 2s ease-in-out infinite;box-shadow:0 4px 24px rgba(79,70,229,.6);">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="#ffffff"><polygon points="6,3 20,12 6,21"/></svg>
             </div>
-            <span style="background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.85);border-radius:9999px;padding:5px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;">WATCH INTRO</span>
+            <span style="background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.85);border-radius:9999px;padding:5px 16px;color:#fff;font-family:'DM Sans',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;">▶ WATCH INTRO</span>
           </a>
         </div>
       </div>
